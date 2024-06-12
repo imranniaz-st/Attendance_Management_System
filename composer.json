@@ -15,6 +15,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "php-ai/php-ml": "^0.10.0",
         "rats/zkteco": "^002.0"
     },
     "require-dev": {

@@ -121,7 +121,21 @@ class BiometricDeviceController extends Controller
 
         return back();
     }
-
+    public function DeleteUserFromDevice(FingerDevices $fingerDevice, Employee $employee): RedirectResponse
+    {
+        $device = new ZKTeco($fingerDevice->ip, 4370);
+        if ($device->connect()) {
+            $result = $device->deleteUser($employee->id);
+            if ($result) {
+                flash()->success('Success', 'Employee deleted from Biometric device successfully!');
+            } else {
+                flash()->error('Error', 'Failed to delete employee from Biometric device!');
+            }
+        } else {
+            flash()->error('Error', 'Failed to connect to Biometric device!');
+        }
+        return back();
+    }
     public function getAttendance(FingerDevices $fingerDevice)
     {
         $device = new ZKTeco($fingerDevice->ip, 4370);

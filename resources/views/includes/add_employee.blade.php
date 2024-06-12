@@ -17,38 +17,25 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="name"
-                                required />
+                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="name" required oninput="replaceSpaceWithHyphen()"/>
                         </div>
                         <div class="form-group">
                             <label for="position">Position</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="position" name="position"
-                                required />
+                            <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position" required />
                         </div>
-
-                        
                         <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">Email</label>
-
-
-                            <input type="email" class="form-control" id="email" name="email">
-
+                            <input type="email" class="form-control" id="email" name="email" required />
                         </div>
                         <div class="form-group">
                             <label for="schedule" class="col-sm-3 control-label">Schedule</label>
-
-
                             <select class="form-control" id="schedule" name="schedule" required>
                                 <option value="" selected>- Select -</option>
                                 @foreach($schedules as $schedule)
-                                <option value="{{$schedule->slug}}">{{$schedule->slug}} -> from {{$schedule->time_in}}
-                                    to {{$schedule->time_out}} </option>
+                                    <option value="{{$schedule->slug}}">{{$schedule->slug}} -> from {{$schedule->time_in}} to {{$schedule->time_out}}</option>
                                 @endforeach
-
                             </select>
-
                         </div>
-
                         <div class="form-group">
                             <div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">
@@ -61,6 +48,8 @@
                         </div>
                     </form>
 
+
+
                 </div>
             </div>
 
@@ -70,3 +59,9 @@
     </div>
 </div>
 </div>
+<script>
+    function replaceSpaceWithHyphen() {
+        const nameInput = document.getElementById('name');
+        nameInput.value = nameInput.value.replace(/ /g, '-');
+    }
+</script>
