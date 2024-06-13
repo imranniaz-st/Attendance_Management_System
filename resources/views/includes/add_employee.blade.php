@@ -17,11 +17,10 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="name" required oninput="replaceSpaceWithHyphen()"/>
-                        </div>
+                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="name" name="name" required pattern="[^\s]+" onkeyup="this.value = this.value.replace(/\s/g, '-')" />
                         <div class="form-group">
                             <label for="position">Position</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position" required />
+                            <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position"  required pattern="[^\s]+" onkeyup="this.value = this.value.replace(/\s/g, '-')" />
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">Email</label>
@@ -59,9 +58,3 @@
     </div>
 </div>
 </div>
-<script>
-    function replaceSpaceWithHyphen() {
-        const nameInput = document.getElementById('name');
-        nameInput.value = nameInput.value.replace(/ /g, '-');
-    }
-</script>
