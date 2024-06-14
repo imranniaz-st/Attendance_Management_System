@@ -17,6 +17,7 @@ use Gate;
 use Illuminate\Http\RedirectResponse;
 use Rats\Zkteco\Lib\ZKTeco;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\EmployeApi;
 
 class BiometricDeviceController extends Controller
 {
@@ -30,6 +31,13 @@ class BiometricDeviceController extends Controller
         $devices = FingerDevices::all();
 
         return view('admin.fingerDevices.index', compact('devices'));
+    }
+
+    public function showEmployee() {
+        $employees = EmployeApi::get();
+        return response()->json([
+            'employees' => $employees
+        ]);
     }
 
     /**

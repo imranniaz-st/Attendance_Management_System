@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth', 'Role'], 'roles' => ['admin']], function 
     Route::post('check-store', [CheckController::class, 'CheckStore'])->name('check_store');
     Route::resource('/finger_device', BiometricDeviceController::class);
     Route::delete('finger_device/destroy', [BiometricDeviceController::class, 'massDestroy'])->name('finger_device.massDestroy');
+
+    Route::get('show_employee', [BiometricDeviceController::class, 'showEmployee'])->name('showEmployee');
+
+
     Route::get('finger_device/{fingerDevice}/employees/add', [BiometricDeviceController::class, 'addEmployee'])->name('finger_device.add.employee');
     Route::get('finger_device/{fingerDevice}/get/attendance', [BiometricDeviceController::class, 'getAttendance'])->name('finger_device.get.attendance');
     Route::get('finger_device/clear/attendance', function () {
