@@ -23,7 +23,7 @@
                             </select>
 
                         <div class="form-group">Position
-                            <label for="position">Position</label>  
+                            <label for="position">Position</label>
                             <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position" value="Jsons-team"  required pattern="[^\s]+" onkeyup="this.value = this.value.replace(/\s/g, '-')" />
                         </div>
                         <div class="form-group">
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="schedule" class="col-sm-3 control-label">Schedule</label>
                             <select class="form-control" id="schedule" name="schedule" required>
-                                
+
                                 @foreach($schedules as $schedule)
                                     <option value="{{$schedule->slug}}">{{$schedule->slug}} -> from {{$schedule->time_in}} to {{$schedule->time_out}}</option>
                                 @endforeach
@@ -86,6 +86,7 @@
                 console.error('Error fetching data:', error);
             }
         });
+
 
         $('#employeeSelect').change(function() {
             var selectedEmployeeId = $(this).val();
