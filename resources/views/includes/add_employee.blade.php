@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required value="" />
+                            <input type="email" class="form-control" id="emp_email" name="email" disabled required value="" />
                         </div>
                         <div class="form-group">
                             <label for="schedule" class="col-sm-3 control-label">Schedule</label>
@@ -79,7 +79,7 @@
                 $.each(responseEmployees, function(index, employee) {
                     var displayName = employee.name.replace(/\s+/g, '-'); // Replace spaces with hyphens
                     $('#employeeSelect').append('<option value="' + employee.id + '">' + displayName + '</option>');
-                });
+                 });
                 $('#employeeSelect').trigger('change');
             },
             error: function(xhr, status, error) {
@@ -87,13 +87,14 @@
             }
         });
 
-
         $('#employeeSelect').change(function() {
             var selectedEmployeeId = $(this).val();
             var selectedEmployee = responseEmployees.find(function(employee) {
                 return employee.id == selectedEmployeeId;
             });
-            $('#email').val(selectedEmployee.email);
+            $('#emp_email').prop('disabled', true);
+            $('#emp_email').val(selectedEmployee.email);
         });
     });
 </script>
+{{--  php artisan store:employee_data  --}}
