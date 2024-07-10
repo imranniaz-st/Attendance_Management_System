@@ -28,8 +28,8 @@
                             required>
 
                     </div>
-                 
-                  
+
+
                     <div class="form-group">
                         <label for="email" class="col-sm-3 control-label">Email</label>
 
@@ -43,7 +43,7 @@
 
 
                         <select class="form-control" id="schedule" name="schedule" required>
-                            <option value="" selected>- Select -</option>
+
                             @foreach ($schedules as $schedule)
                                 <option value="{{ $schedule->slug }}">{{ $schedule->slug }} -> from
                                     {{ $schedule->time_in }} to {{ $schedule->time_out }} </option>
@@ -70,7 +70,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header " style="align-items: center">
-               
+
               <h4 class="modal-title "><span class="employee_id">Delete Employee</span></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
@@ -92,3 +92,54 @@
         </div>
     </div>
 </div>
+<script>
+    // Edit Employee
+    $(document).on('submit', '#edit-form', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        var method = form.attr('method');
+        var data = form.serialize();
+
+        $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            success: function(response) {
+                // Handle success response
+                // For example, show a success message or update the employee details on the page
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                // Handle error response
+                // For example, show an error message or log the error
+                console.log(xhr.responseText);
+            }
+        });
+    });
+
+    // Delete Employee
+    $(document).on('submit', '#delete-form', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        var method = form.attr('method');
+        var data = form.serialize();
+
+        $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            success: function(response) {
+                // Handle success response
+                // For example, show a success message or remove the deleted employee from the page
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                // Handle error response
+                // For example, show an error message or log the error
+                console.log(xhr.responseText);
+            }
+        });
+    });
+</script>

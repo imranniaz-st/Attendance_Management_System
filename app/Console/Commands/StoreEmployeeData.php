@@ -14,6 +14,7 @@ class StoreEmployeeData extends Command
      */
     protected $signature = 'store:employee_data';
 
+
     /**
      * The console command description.
      *

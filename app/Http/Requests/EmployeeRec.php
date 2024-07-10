@@ -25,7 +25,7 @@ class EmployeeRec extends FormRequest
     {
         return [
             'name' => 'required|string|min:1|max:64|alpha_dash',
-            'position' => 'required|string|min:3|max:64|alpha_dash',
+            'position' => 'required|string|min:1|max:64|alpha_dash',
             'schedule' => 'required|exists:schedules,slug',
         ];
     }

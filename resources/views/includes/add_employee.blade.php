@@ -26,6 +26,11 @@
                             <label for="position">Position</label>
                             <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position" value="Jsons-team"  required pattern="[^\s]+" onkeyup="this.value = this.value.replace(/\s/g, '-')" />
                         </div>
+                        <div class="form-group">Position
+                            <label for="id">Position</label>
+                            <input type="text" class="form-control" placeholder="Enter Employee Position" id="position" name="position" value="Jsons-team"  required pattern="[^\s]+" onkeyup="this.value = this.value.replace(/\s/g, '-')" />
+                        </div>
+
                         <div class="form-group">
                             <label for="email" class="col-sm-3 control-label">Email</label>
                             <input type="email" class="form-control" id="emp_email" name="email" disabled required value="" />
